@@ -172,7 +172,10 @@
       padding: 28px;
       border: 1px solid #eee;
     }
-
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
     .card i {
       font-size: 28px;
       color: var(--primary);
@@ -702,7 +705,18 @@ img {
     <p class="modal-switch">Already have an account? <span onclick="switchModal('signup','signin')">Sign in</span></p>
   </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+const cards = document.querySelectorAll('#pricing .card');
 
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('highlight'));
+        card.classList.add('highlight');
+        });
+    });
+});
+</script>
 <script>
   const items = document.querySelectorAll('[data-animate]');
   const observer = new IntersectionObserver(entries => {
